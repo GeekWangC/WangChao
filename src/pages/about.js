@@ -17,12 +17,9 @@ const AboutPage = () => {
               />
             </div>
             <div className="bio">
-              <h2>Hello, I'm [Your Name]</h2>
+              <h2>王超</h2>
               <p>
-                I'm a passionate developer who loves creating elegant solutions to
-                complex problems. With a strong foundation in web development and
-                a keen eye for design, I strive to build applications that are
-                both functional and beautiful.
+                一个热爱技术、热爱生活的程序员。
               </p>
               <div className="skills">
                 <h3>Skills</h3>
