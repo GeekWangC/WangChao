@@ -1,0 +1,22 @@
+backend:
+  name: github
+  repo: GeekWangC/WangChao # 替换为你的 GitHub 用户名/仓库名
+  branch: main # 或者你使用的分支名，如 master
+
+# 如果在本地开发时使用
+local_backend: true
+
+media_folder: static/images
+public_folder: /images
+
+collections:
+  - name: "blog"
+    label: "博客文章"
+    folder: "src/content"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "发布日期", name: "date", widget: "datetime" }
+      - { label: "封面图片", name: "thumbnail", widget: "image", required: false }
+      - { label: "正文", name: "body", widget: "markdown" } 
