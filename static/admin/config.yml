@@ -1,7 +1,9 @@
 backend:
   name: github
-  repo: GeekWangC/WangChao # 替换为你的 GitHub 用户名/仓库名
-  branch: main # 或者你使用的分支名，如 master
+  repo: geekwangc/WangChao # 替换为你的 GitHub 用户名/仓库名
+  branch: main
+  base_url: https://geekwangc.com # 替换为你的 Vercel 网站 URL
+  auth_endpoint: api/auth
 
 # 如果在本地开发时使用
 local_backend: true
@@ -10,16 +12,16 @@ media_folder: static/images
 public_folder: /images
 
 collections:
-  - name: "blog"
-    label: "博客文章"
-    folder: "src/content"
+  - name: blog
+    label: Blog
+    folder: src/content
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{slug}}"
     fields:
       - { label: "标题", name: "title", widget: "string" }
       - { label: "发布日期", name: "date", widget: "datetime" }
       - { label: "封面图片", name: "thumbnail", widget: "image", required: false }
-      - { label: "分类", name: "category", widget: "select", options: ["技术", "生活", "随笔", "其他"] }
+      - { label: "分类", name: "category", widget: "string" }
       - { label: "标签", name: "tags", widget: "list" }
-      - { label: "摘要", name: "description", widget: "text" }
+      - { label: "描述", name: "description", widget: "text" }
       - { label: "正文", name: "body", widget: "markdown" } 
