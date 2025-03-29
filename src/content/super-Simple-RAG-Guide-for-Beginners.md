@@ -1,6 +1,9 @@
 ---
 title: "给小白的RAG超简单说明书"
 date: "2025-03-27"
+category: "AI"
+tags: ["RAG", "AI", "教程"]
+description: "一个简单易懂的RAG（检索增强生成）入门指南，适合初学者阅读。"
 ---
 
 # 什么是RAG？

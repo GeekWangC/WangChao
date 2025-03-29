@@ -3,7 +3,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
   if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: `content` })
+    const slug = createFilePath({ node, getNode, basePath: `src/content` })
     createNodeField({
       node,
       name: `slug`,
@@ -37,4 +37,20 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+}
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+
+  const typeDefs = `
+    type MarkdownRemarkFrontmatter {
+      title: String!
+      date: Date! @dateformat
+      category: String!
+      tags: [String]
+      description: String
+      thumbnail: File
+    }
+  `
+  createTypes(typeDefs)
 } 

@@ -29,7 +29,7 @@ const IndexPage = ({ data }) => {
     }
   }, []);
 
-  const posts = data.allMarkdownRemark.edges
+  const posts = data.allMarkdownRemark.nodes
 
   return (
     <Layout>
@@ -42,15 +42,20 @@ const IndexPage = ({ data }) => {
         <section className="posts">
           <h2>最新文章</h2>
           <div className="post-grid">
-            {posts && posts.map(({ node }) => (
-              <article key={node.id} className="post-card">
-                <h3>
-                  <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
-                </h3>
-                <p>{node.frontmatter.date}</p>
-                <p>{node.excerpt}</p>
-              </article>
-            ))}
+            {posts && posts.map((post) => {
+              if (!post || !post.frontmatter) return null;
+              
+              const { id, frontmatter, fields, excerpt } = post;
+              return (
+                <article key={id} className="post-card">
+                  <h3>
+                    <Link to={fields.slug}>{frontmatter.title}</Link>
+                  </h3>
+                  <p>{frontmatter.date}</p>
+                  <p>{excerpt}</p>
+                </article>
+              );
+            })}
           </div>
         </section>
       </div>
@@ -60,19 +65,30 @@ const IndexPage = ({ data }) => {
 
 export const query = graphql`
   query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-            date(formatString: "MMMM DD, YYYY")
+    allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
+      nodes {
+        id
+        frontmatter {
+          title
+          date(formatString: "YYYY-MM-DD")
+          category
+          tags
+          description
+          thumbnail {
+            publicURL
+            childImageSharp {
+              gatsbyImageData(
+                width: 800
+                placeholder: BLURRED
+                formats: [AUTO, WEBP]
+              )
+            }
           }
-          fields {
-            slug
-          }
-          excerpt
         }
+        fields {
+          slug
+        }
+        excerpt
       }
     }
   }

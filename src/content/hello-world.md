@@ -1,6 +1,9 @@
 ---
 title: "Hello World"
 date: "2024-03-25"
+category: "技术"
+tags: ["Gatsby", "博客"]
+description: "我的第一篇博客文章，介绍这个博客的初衷和未来计划。"
 ---
 
 # Welcome to My Blog
