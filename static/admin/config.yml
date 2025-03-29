@@ -3,7 +3,8 @@ backend:
   repo: geekwangc/WangChao
   branch: main
   base_url: https://geekwangc.com
-  auth_endpoint: /api/auth
+  auth_endpoint: api/auth
+  client_id: GATSBY_OAUTH_CLIENT_ID # 使用环境变量中的 client_id
 
 # 如果在本地开发时使用
 local_backend: true
