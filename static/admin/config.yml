@@ -1,9 +1,9 @@
 backend:
   name: github
-  repo: geekwangc/WangChao # 替换为你的 GitHub 用户名/仓库名
+  repo: geekwangc/WangChao
   branch: main
-  base_url: https://geekwangc.com # 替换为你的 Vercel 网站 URL
-  auth_endpoint: api/auth
+  base_url: https://geekwangc.com
+  auth_endpoint: /api/auth
 
 # 如果在本地开发时使用
 local_backend: true

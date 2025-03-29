@@ -34,7 +34,7 @@ const AboutPage = () => {
                 <h3>Get in Touch</h3>
                 <p>
                   Feel free to reach out to me at{' '}
-                  <a href="mailto:your.email@example.com">your.email@example.com</a>
+                  <a href="mailto:geekwangc@163.com">geekwangc@163.com</a>
                 </p>
               </div>
             </div>
