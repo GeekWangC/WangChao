@@ -1,5 +1,5 @@
 export default async function handler(req, res) {
-  const { query } = req;
+  const { query = {} } = req;
 
   try {
     if (!query.code) {
