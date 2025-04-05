@@ -1,6 +1,6 @@
 ---
 title: "个人主页实现方案详解"
-date: "2024-04-05"
+date: "2025-04-05"
 category: "技术"
 tags: ["React", "Gatsby", "Framer Motion", "Chart.js", "响应式设计"]
 description: "详细介绍如何使用React、Gatsby、Framer Motion和Chart.js构建一个现代化的个人主页，包括技能雷达图、项目展示、时间线等功能的实现方案。"
