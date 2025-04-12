@@ -89,10 +89,7 @@ const WorkCountdown = () => {
     }
 
     const calculateEarnings = () => {
-      if (isHoliday()) {
-        setTodayEarnings('0.00')
-        return
-      }
+      
 
       const now = new Date()
       const [startHour, startMinute] = settings.workStart.split(':').map(Number)
@@ -111,10 +108,17 @@ const WorkCountdown = () => {
       const todayEarned = Math.max(0, Math.min(workedHours * hourlyRate, dailySalary))
       setTodayEarnings(todayEarned.toFixed(2))
       
-      // 计算今年收入（简化计算）
-      const daysWorked = Math.floor((now - new Date(now.getFullYear(), 0, 1)) / (1000 * 60 * 60 * 24))
-      const yearEarned = (daysWorked / 365) * settings.salary * 12
+      // 计算今年收入
+      const yearStart = new Date(now.getFullYear(), 0, 1)
+      const daysWorked = Math.floor((now - yearStart) / (1000 * 60 * 60 * 24))
+      const workDaysInYear = Math.floor(daysWorked / 7 * 5) // 每周5个工作日
+      const yearEarned = (workDaysInYear / 22) * settings.salary // 按每月22个工作日计算
       setYearEarnings(yearEarned.toFixed(2))
+
+      if (isHoliday()) {
+        setTodayEarnings('0.00')
+        return
+      }
     }
 
     const calculateNextHoliday = () => {
@@ -148,7 +152,7 @@ const WorkCountdown = () => {
     }, 60000) // 每分钟更新一次
 
     return () => clearInterval(timer)
-  }, [settings])
+  }, [settings, isHoliday])
 
   // 保存设置到 localStorage
   const handleSaveSettings = (newSettings) => {
