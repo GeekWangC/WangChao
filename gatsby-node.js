@@ -43,13 +43,22 @@ exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
 
   const typeDefs = `
+    type MarkdownRemark implements Node {
+      frontmatter: MarkdownRemarkFrontmatter
+      fields: MarkdownRemarkFields
+    }
+    
     type MarkdownRemarkFrontmatter {
       title: String!
-      date: Date! @dateformat
-      category: String!
-      tags: [String]
+      date: Date @dateformat
       description: String
-      thumbnail: File
+      category: String
+      tags: [String]
+      thumbnail: File @fileByRelativePath
+    }
+    
+    type MarkdownRemarkFields {
+      slug: String!
     }
   `
   createTypes(typeDefs)

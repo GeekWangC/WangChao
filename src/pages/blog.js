@@ -21,7 +21,9 @@ const BlogPage = ({ data }) => {
 
 export const query = graphql`
   query {
-    allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
+    allMarkdownRemark(
+      sort: { frontmatter: { date: DESC } }
+    ) {
       nodes {
         id
         frontmatter {
@@ -44,7 +46,7 @@ export const query = graphql`
         fields {
           slug
         }
-        excerpt
+        excerpt(pruneLength: 200)
       }
     }
   }
