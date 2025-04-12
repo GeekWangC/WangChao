@@ -9,10 +9,7 @@ const PRIORITIES = {
 };
 
 const TodoList = ({ viewMode, onViewModeChange }) => {
-  const [todos, setTodos] = useState(() => {
-    const savedTodos = localStorage.getItem('todos');
-    return savedTodos ? JSON.parse(savedTodos) : [];
-  });
+  const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState({
     title: '',
     description: '',
@@ -25,7 +22,18 @@ const TodoList = ({ viewMode, onViewModeChange }) => {
   const [showAddForm, setShowAddForm] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos));
+    if (typeof window !== 'undefined') {
+      const savedTodos = localStorage.getItem('todos');
+      if (savedTodos) {
+        setTodos(JSON.parse(savedTodos));
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('todos', JSON.stringify(todos));
+    }
   }, [todos]);
 
   const handleInputChange = (e, todo = null) => {
