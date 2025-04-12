@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import WorkCountdown from './WorkCountdown'
+import '../styles/global.css'
 
 const Layout = ({ children }) => {
   return (
@@ -17,6 +19,8 @@ const Layout = ({ children }) => {
       <main className="main">
         {children}
       </main>
+
+      <WorkCountdown />
 
       <footer className="footer">
         <p>© {new Date().getFullYear()} My Personal Site. All rights reserved.</p>

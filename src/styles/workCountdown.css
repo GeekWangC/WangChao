@@ -1,0 +1,108 @@
+.work-countdown {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  color: white;
+  font-family: 'Arial', sans-serif;
+  z-index: 1000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.countdown-content {
+  position: relative;
+  min-width: 150px;
+}
+
+.main-countdown {
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.details {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.details p {
+  margin: 5px 0;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+.quote {
+  font-style: italic;
+  color: #ffeaa7;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.settings-button,
+.close-button {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.settings-button {
+  top: -10px;
+  left: -10px;
+}
+
+.close-button {
+  top: -10px;
+  right: -10px;
+}
+
+.settings-button:hover,
+.close-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+/* 添加一些可爱的动画效果 */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.main-countdown {
+  animation: bounce 2s infinite;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .work-countdown {
+    bottom: 10px;
+    right: 10px;
+    padding: 10px;
+  }
+
+  .main-countdown {
+    font-size: 1em;
+  }
+
+  .details p {
+    font-size: 0.8em;
+  }
+} 
