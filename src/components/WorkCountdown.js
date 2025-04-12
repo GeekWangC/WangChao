@@ -13,17 +13,27 @@ const WorkCountdown = () => {
   const [yearEarnings, setYearEarnings] = useState(0)
   const [randomQuote, setRandomQuote] = useState('')
   
+  // 默认设置
+  const defaultSettings = {
+    salary: 10000,
+    workStart: '09:00',
+    workEnd: '18:00',
+    workDays: [1, 2, 3, 4, 5],
+    showCountdown: true
+  }
+  
   // 从 localStorage 加载设置
-  const [settings, setSettings] = useState(() => {
-    const savedSettings = localStorage.getItem('workCountdownSettings')
-    return savedSettings ? JSON.parse(savedSettings) : {
-      salary: 10000,
-      workStart: '09:00',
-      workEnd: '18:00',
-      workDays: [1, 2, 3, 4, 5],
-      showCountdown: true
+  const [settings, setSettings] = useState(defaultSettings)
+
+  // 在客户端加载设置
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedSettings = localStorage.getItem('workCountdownSettings')
+      if (savedSettings) {
+        setSettings(JSON.parse(savedSettings))
+      }
     }
-  })
+  }, [])
 
   // 随机励志语录
   const quotes = [
@@ -143,7 +153,9 @@ const WorkCountdown = () => {
   // 保存设置到 localStorage
   const handleSaveSettings = (newSettings) => {
     setSettings(newSettings)
-    localStorage.setItem('workCountdownSettings', JSON.stringify(newSettings))
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('workCountdownSettings', JSON.stringify(newSettings))
+    }
     setIsVisible(newSettings.showCountdown)
   }
 
