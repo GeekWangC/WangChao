@@ -1,0 +1,230 @@
+.game-2048 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+  touch-action: none;
+  user-select: none;
+}
+
+.game-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.scores {
+  display: flex;
+  gap: 1rem;
+}
+
+.score-box {
+  background: #bbada0;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100px;
+}
+
+.score-label {
+  color: #eee4da;
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  margin-bottom: 0.25rem;
+}
+
+.score-value {
+  color: white;
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  font-weight: bold;
+}
+
+.reset-button {
+  background: #8f7a66;
+  border: none;
+  border-radius: 0.5rem;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.reset-button:hover {
+  background: #7f6a56;
+}
+
+.board {
+  background: #bbada0;
+  border-radius: 0.5rem;
+  padding: min(20px, 4vw);
+  width: fit-content;
+  touch-action: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: min(15px, 3vw);
+  background: #bbada0;
+}
+
+.cell {
+  background: #cdc1b4;
+  border-radius: 0.5rem;
+  aspect-ratio: 1;
+  width: min(80px, 20vw);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(1.5rem, 6vw, 2.5rem);
+  font-weight: bold;
+  position: relative;
+  will-change: transform;
+}
+
+.cell-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+}
+
+.cell-2 .cell-content { background: #eee4da; color: #776e65; }
+.cell-4 .cell-content { background: #ede0c8; color: #776e65; }
+.cell-8 .cell-content { background: #f2b179; color: #f9f6f2; }
+.cell-16 .cell-content { background: #f59563; color: #f9f6f2; }
+.cell-32 .cell-content { background: #f67c5f; color: #f9f6f2; }
+.cell-64 .cell-content { background: #f65e3b; color: #f9f6f2; }
+.cell-128 .cell-content {
+  background: #edcf72;
+  color: #f9f6f2;
+  font-size: clamp(1.2rem, 5vw, 2rem);
+}
+.cell-256 .cell-content {
+  background: #edcc61;
+  color: #f9f6f2;
+  font-size: clamp(1.2rem, 5vw, 2rem);
+}
+.cell-512 .cell-content {
+  background: #edc850;
+  color: #f9f6f2;
+  font-size: clamp(1.2rem, 5vw, 2rem);
+}
+.cell-1024 .cell-content {
+  background: #edc53f;
+  color: #f9f6f2;
+  font-size: clamp(1rem, 4vw, 1.8rem);
+}
+.cell-2048 .cell-content {
+  background: #edc22e;
+  color: #f9f6f2;
+  font-size: clamp(1rem, 4vw, 1.8rem);
+}
+
+.game-over {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(238, 228, 218, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.game-over h2 {
+  font-size: clamp(2rem, 6vw, 3rem);
+  color: #776e65;
+  margin-bottom: 1rem;
+}
+
+.game-over p {
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  color: #776e65;
+  margin-bottom: 2rem;
+}
+
+.game-over button {
+  background: #8f7a66;
+  border: none;
+  border-radius: 0.5rem;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.game-over button:hover {
+  background: #7f6a56;
+}
+
+/* 横屏优化 */
+@media (orientation: landscape) and (max-height: 600px) {
+  .game-2048 {
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .game-header {
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+
+  .scores {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .score-box {
+    min-width: 80px;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .cell {
+    width: min(60px, 15vw);
+  }
+}
+
+/* 移动端优化 */
+@media (max-width: 480px) {
+  .game-2048 {
+    padding: 0.5rem;
+  }
+
+  .game-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .scores {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .score-box {
+    flex: 1;
+    max-width: 120px;
+  }
+
+  .reset-button {
+    width: 100%;
+    max-width: 200px;
+  }
+} 

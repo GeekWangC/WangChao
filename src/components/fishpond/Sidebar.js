@@ -12,7 +12,9 @@ const Sidebar = ({ activeMenu, onMenuChange }) => {
       label: '小游戏', 
       icon: '🎮',
       subItems: [
-        { id: 'gomoku', label: '五子棋', icon: '⚫' }
+        { id: 'gomoku', label: '五子棋', icon: '⚫' },
+        { id: '2048', label: '2048', icon: '🎲' },
+        { id: 'snake', label: '贪吃蛇', icon: '🐍' }
       ]
     }
   ];

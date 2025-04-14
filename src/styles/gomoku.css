@@ -2,103 +2,123 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
+  padding: 1rem;
   max-width: 800px;
   margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .game-info {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  width: 100%;
 }
 
 .game-info h2 {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
   color: #333;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .game-info p {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 3vw, 1.2rem);
   color: #666;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .reset-button {
   padding: 0.5rem 1rem;
-  font-size: 1rem;
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
   background-color: #4CAF50;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .reset-button:hover {
   background-color: #45a049;
 }
 
+.reset-button:active {
+  transform: scale(0.98);
+}
+
 .board-container {
   position: relative;
-  padding: 20px;
+  padding: min(20px, 4vw);
   background-color: #DEB887;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: fit-content;
+  margin: 0 auto;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
 .gomoku-board {
   display: grid;
-  grid-template-columns: repeat(15, 40px);
-  grid-template-rows: repeat(15, 40px);
+  --cell-size: min(40px, calc((100vw - 40px) / 15));
+  grid-template-columns: repeat(15, var(--cell-size));
+  grid-template-rows: repeat(15, var(--cell-size));
   position: relative;
   background-color: transparent;
-  margin: 20px;
+  margin: var(--cell-size);
 }
 
 /* 棋盘网格线 */
 .board-cell {
   position: relative;
-  width: 40px;
-  height: 40px;
+  width: var(--cell-size);
+  height: var(--cell-size);
   cursor: pointer;
   background-color: transparent;
-  margin: -20px;
+  margin: calc(var(--cell-size) * -0.5);
+  touch-action: none;
 }
 
 /* 水平线 */
 .board-cell::before {
   content: '';
   position: absolute;
-  left: 20px;
-  top: 20px;
-  width: 40px;
+  left: 50%;
+  top: 50%;
+  width: 100%;
   height: 1px;
   background-color: #000;
+  transform: translate(-50%, -50%);
 }
 
 /* 垂直线 */
 .board-cell::after {
   content: '';
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 50%;
+  left: 50%;
   width: 1px;
-  height: 40px;
+  height: 100%;
   background-color: #000;
+  transform: translate(-50%, -50%);
 }
 
 /* 棋子样式 */
 .piece {
   position: absolute;
-  width: 32px;
-  height: 32px;
+  --piece-size: calc(var(--cell-size) * 0.8);
+  width: var(--piece-size);
+  height: var(--piece-size);
   border-radius: 50%;
-  top: 4px;
-  left: 4px;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
   pointer-events: none;
+  will-change: transform;
 }
 
 .piece.player {
@@ -116,12 +136,12 @@
 .board-cell[data-position="center"]::before {
   content: '';
   position: absolute;
-  width: 8px;
-  height: 8px;
+  width: calc(var(--cell-size) * 0.2);
+  height: calc(var(--cell-size) * 0.2);
   background-color: #000;
   border-radius: 50%;
-  top: 20px;
-  left: 20px;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
 }
@@ -130,12 +150,12 @@
 .last-move::after {
   content: '';
   position: absolute;
-  width: 8px;
-  height: 8px;
+  width: calc(var(--cell-size) * 0.2);
+  height: calc(var(--cell-size) * 0.2);
   background-color: #ffeb3b;
   border-radius: 50%;
-  top: 20px;
-  left: 20px;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   z-index: 3;
   animation: pulse 1s infinite;
@@ -160,65 +180,46 @@
 .board-container::before {
   content: '';
   position: absolute;
-  top: 40px;
-  left: 40px;
-  right: 40px;
-  bottom: 40px;
+  top: var(--cell-size);
+  left: var(--cell-size);
+  right: var(--cell-size);
+  bottom: var(--cell-size);
   border: 2px solid #8B4513;
   pointer-events: none;
 }
 
-@media (max-width: 600px) {
-  .board-container {
-    padding: 10px;
+/* 移动端优化 */
+@media (hover: none) {
+  .board-cell:active {
+    background-color: rgba(0, 0, 0, 0.1);
   }
+}
 
-  .gomoku-board {
-    grid-template-columns: repeat(15, 20px);
-    grid-template-rows: repeat(15, 20px);
-    margin: 10px;
-  }
-
-  .board-cell {
-    width: 20px;
-    height: 20px;
-    margin: -10px;
-  }
-
-  .board-cell::before {
-    left: 10px;
-    top: 10px;
-    width: 20px;
-  }
-
-  .board-cell::after {
-    top: 10px;
-    left: 10px;
-    height: 20px;
-  }
-
-  .piece {
-    width: 16px;
-    height: 16px;
-    top: 10px;
-    left: 10px;
-  }
-
-  .board-cell[data-position="star"]::before,
-  .board-cell[data-position="center"]::before,
-  .last-move::after {
-    top: 10px;
-    left: 10px;
-  }
-
+@media (max-width: 480px) {
   .gomoku-container {
-    padding: 1rem;
+    padding: 0.5rem;
   }
 
-  .board-container::before {
-    top: 20px;
-    left: 20px;
-    right: 20px;
-    bottom: 20px;
+  .game-info {
+    margin-bottom: 0.5rem;
+  }
+
+  .board-container {
+    border-radius: 4px;
+  }
+}
+
+/* 横屏优化 */
+@media (max-height: 600px) and (orientation: landscape) {
+  .gomoku-container {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .game-info {
+    margin-bottom: 0;
+    flex-shrink: 0;
   }
 } 
