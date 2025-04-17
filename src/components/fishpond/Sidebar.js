@@ -4,6 +4,7 @@ import '../../styles/fishpond.css';
 const Sidebar = ({ activeMenu, onMenuChange }) => {
   const menuItems = [
     { id: 'todo', label: '每日待办', icon: '📝' },
+    { id: 'diary', label: '日记本', icon: '📔' },
     { id: 'notes', label: '笔记', icon: '📚' },
     { id: 'tasks', label: '任务', icon: '✅' },
     { id: 'calendar', label: '日历', icon: '📅' },

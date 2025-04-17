@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import Sidebar from '../components/fishpond/Sidebar';
 import TodoList from '../components/fishpond/TodoList';
+import Diary from '../components/fishpond/Diary';
 import Gomoku from '../components/fishpond/Gomoku';
 import Snake from '../components/fishpond/Snake';
 import Game2048 from '../components/fishpond/Game2048';
@@ -15,6 +16,8 @@ const FishpondPage = () => {
     switch (activeMenu) {
       case 'todo':
         return <TodoList viewMode={viewMode} onViewModeChange={setViewMode} />;
+      case 'diary':
+        return <Diary />;
       case 'gomoku':
         return <Gomoku />;
       case '2048':
