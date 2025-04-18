@@ -35,6 +35,10 @@ const InterviewGuide = ({ data }) => {
       path: 'javascript',
       subtopics: [
         {
+          title: '核心概念',
+          content: allContent.find(node => node.frontmatter.title === "JavaScript 核心概念")
+        },
+        {
           title: '变量和数据类型',
           content: allContent.find(node => node.frontmatter.title === "变量和数据类型")
         },
