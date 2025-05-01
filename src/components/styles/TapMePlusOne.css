@@ -1,0 +1,88 @@
+.tap-me-plus-one {
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.score, .moves {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.restart-button {
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.restart-button:hover {
+  background-color: #45a049;
+}
+
+.game-board {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.board-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+}
+
+.cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  font-weight: bold;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.1s, background-color 0.1s;
+}
+
+.cell:hover {
+  transform: scale(1.05);
+  background-color: #e0e0e0;
+}
+
+.game-over {
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.game-over p {
+  margin: 10px 0;
+  font-size: 1.2em;
+}
+
+@media (max-width: 600px) {
+  .tap-me-plus-one {
+    padding: 10px;
+  }
+  
+  .cell {
+    font-size: 1.5em;
+  }
+} 

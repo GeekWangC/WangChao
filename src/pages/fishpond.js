@@ -6,6 +6,7 @@ import Diary from '../components/fishpond/Diary';
 import Gomoku from '../components/fishpond/Gomoku';
 import Snake from '../components/fishpond/Snake';
 import Game2048 from '../components/fishpond/Game2048';
+import TapMePlusOne from '../components/fishpond/TapMePlusOne';
 import '../styles/fishpond.css';
 
 const FishpondPage = () => {
@@ -24,6 +25,8 @@ const FishpondPage = () => {
         return <Game2048 />;
       case 'snake':
         return <Snake />;
+      case 'tapme':
+        return <TapMePlusOne />;
       default:
         return <div>开发中...</div>;
     }

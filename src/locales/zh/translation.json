@@ -1,0 +1,13 @@
+{
+  "todoList": "每日待办",
+  "diary": "日记本",
+  "gomoku": "五子棋",
+  "game2048": "2048",
+  "snake": "贪吃蛇",
+  "tapMePlusOne": "点我加一",
+  "score": "得分",
+  "moves": "行动点",
+  "restart": "重新开始",
+  "gameOver": "游戏结束！",
+  "finalScore": "最终得分"
+} 

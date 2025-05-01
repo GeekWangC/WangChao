@@ -1,0 +1,13 @@
+{
+  "todoList": "Todo List",
+  "diary": "Diary",
+  "gomoku": "Gomoku",
+  "game2048": "2048",
+  "snake": "Snake",
+  "tapMePlusOne": "Tap Me Plus One",
+  "score": "Score",
+  "moves": "Moves",
+  "restart": "Restart",
+  "gameOver": "Game Over!",
+  "finalScore": "Final Score"
+} 
