@@ -11,7 +11,8 @@ const Sidebar = ({ activeMenu, onMenuChange }) => {
     { id: 'gomoku', label: t('gomoku') },
     { id: '2048', label: t('game2048') },
     { id: 'snake', label: t('snake') },
-    { id: 'tapme', label: t('tapMePlusOne') }
+    { id: 'tapme', label: t('tapMePlusOne') },
+    { id: 'tools', label: t('tools') }
   ];
 
   return (
